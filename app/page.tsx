@@ -15,21 +15,13 @@ export default function AuthPage() {
         {/* Left side - Image */}
         <div className="hidden lg:flex lg:w-1/2 relative bg-blue-50">
           <Image
-              src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80"
+              src="/images/debit-home.jpg"
               alt="Budget Management"
               fill
               className="object-cover"
               priority
           />
           <div className="absolute inset-0 bg-blue-900/30 backdrop-blur-sm">
-            <div className="flex flex-col justify-center h-full px-12">
-              <Title level={1} className="text-white mb-6">
-                DEBIT
-              </Title>
-              <p className="text-white/90 text-xl">
-                Take control of your finances with our comprehensive budgeting and expense tracking solution.
-              </p>
-            </div>
           </div>
         </div>
 
