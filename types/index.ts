@@ -1,3 +1,5 @@
+import dayjs from "dayjs";
+
 export interface User {
     userId: string;
     email: string;
@@ -45,4 +47,10 @@ export interface DashboardSummary {
     totalExpenditure: number;
     balance: number;
     remainingBudget: number;
+}
+
+export interface AddIncomeFormData {
+    amount: number;
+    source: string;
+    incomeDate: dayjs.Dayjs;
 }

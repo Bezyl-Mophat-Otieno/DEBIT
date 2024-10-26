@@ -4,51 +4,19 @@ import { useState } from 'react';
 import { Modal, Form, Input, DatePicker, InputNumber, Button } from 'antd';
 import { PlusCircleOutlined, DollarOutlined, CalendarOutlined, TagOutlined } from '@ant-design/icons';
 import dayjs from 'dayjs';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import {AddIncomeFormData} from "@/types";
+import {useIncome} from "@/hooks/useIncome";
+import { addIncome } from "@/services/incomeService";
 
-interface AddIncomeFormData {
-    amount: number;
-    source: string;
-    incomeDate: dayjs.Dayjs;
-}
-
-async function addIncome(data: AddIncomeFormData) {
-    const response = await fetch('/api/incomes', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            ...data,
-            incomeDate: data.incomeDate.toISOString(),
-        }),
-    });
-
-    if (!response.ok) {
-        throw new Error('Failed to add income');
-    }
-
-    return response.json();
-}
-
-export default function AddIncomeModal() {
+export  async function AddIncomeModal() {
     const [isOpen, setIsOpen] = useState(false);
     const [form] = Form.useForm();
-    const queryClient = useQueryClient();
-
-    const { mutate, isPending } = useMutation({
-        mutationFn: addIncome,
-        onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: ['dashboard'] });
-            setIsOpen(false);
-            form.resetFields();
-        },
-    });
+    const { createIncome, isCreating } = await useIncome()
+    
 
     const handleSubmit = (values: AddIncomeFormData) => {
-        mutate(values);
+        createIncome(values)
     };
-
     return (
         <>
             <Button
@@ -127,7 +95,7 @@ export default function AddIncomeModal() {
                         <Button onClick={() => setIsOpen(false)}>
                             Cancel
                         </Button>
-                        <Button type="primary" htmlType="submit" loading={isPending}>
+                        <Button type="primary" htmlType="submit" loading={isCreating}>
                             Add Income
                         </Button>
                     </Form.Item>

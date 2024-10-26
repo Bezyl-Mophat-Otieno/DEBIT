@@ -25,7 +25,7 @@ export async function POST(request: Request) {
             `INSERT INTO budgets (amount, category, period, start_date, end_date, user_id)
        VALUES ($1, $2, $3, $4, $5, $6)
        RETURNING *`,
-            [body.amount, body.category, body.period, body.startDate, body.endDate, 'temp-user-id']
+            [body.amount, body.category, body.cadence, body.startDate, body.endDate, 'temp-user-id']
         );
 
         return NextResponse.json(result[0]);

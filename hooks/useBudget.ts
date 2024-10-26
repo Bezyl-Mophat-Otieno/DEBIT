@@ -2,7 +2,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { getBudgets, createBudget } from '@/services/budgetService';
 import { Budget } from '@/types';
 
-export function useBudgets() {
+export function useBudget() {
     const queryClient = useQueryClient();
 
     const budgets = useQuery({
