@@ -1,58 +1,64 @@
-import { Card, Row, Col, Statistic } from 'antd';
-import {
-  WalletOutlined,
-  ArrowUpOutlined,
-  ArrowDownOutlined,
-} from '@ant-design/icons';
-import AddIncomeModal from '@/components/income/AddIncomeModal';
+'use client'
+import {Card, Row, Col, Statistic, Tabs} from 'antd';
+import Image from "next/image";
+import {LoginForm} from "@/components/auth/LoginForm";
+import {SignupForm} from "@/components/auth/SignupForm";
+import {Typography} from "antd";
+import {useState} from "react";
 
-export default function Home() {
+export default function AuthPage() {
+  const [activeTab, setActiveTab] = useState('login');
+  const { Title } = Typography;
+
   return (
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between mb-6">
-          <h1 className="text-2xl font-bold">Financial Dashboard</h1>
-          <AddIncomeModal />
+      <div className="min-h-screen flex">
+        {/* Left side - Image */}
+        <div className="hidden lg:flex lg:w-1/2 relative bg-blue-50">
+          <Image
+              src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80"
+              alt="Budget Management"
+              fill
+              className="object-cover"
+              priority
+          />
+          <div className="absolute inset-0 bg-blue-900/30 backdrop-blur-sm">
+            <div className="flex flex-col justify-center h-full px-12">
+              <Title level={1} className="text-white mb-6">
+                DEBIT
+              </Title>
+              <p className="text-white/90 text-xl">
+                Take control of your finances with our comprehensive budgeting and expense tracking solution.
+              </p>
+            </div>
+          </div>
         </div>
 
-        <Row gutter={[16, 16]}>
-          <Col xs={24} sm={12} lg={8}>
-            <Card>
-              <Statistic
-                  title="Total Balance"
-                  value={5240.50}
-                  precision={2}
-                  prefix={<WalletOutlined />}
-                  suffix="USD"
-              />
-            </Card>
-          </Col>
-
-          <Col xs={24} sm={12} lg={8}>
-            <Card>
-              <Statistic
-                  title="Income"
-                  value={1840.00}
-                  precision={2}
-                  prefix={<ArrowUpOutlined />}
-                  valueStyle={{ color: '#3f8600' }}
-                  suffix="USD"
-              />
-            </Card>
-          </Col>
-
-          <Col xs={24} sm={12} lg={8}>
-            <Card>
-              <Statistic
-                  title="Expenses"
-                  value={640.20}
-                  precision={2}
-                  prefix={<ArrowDownOutlined />}
-                  valueStyle={{ color: '#cf1322' }}
-                  suffix="USD"
-              />
-            </Card>
-          </Col>
-        </Row>
+        {/* Right side - Auth Forms */}
+        <div className="w-full lg:w-1/2 flex items-center justify-center p-8">
+          <Card className="w-full max-w-md shadow-lg">
+            <Title level={2} className="text-center mb-8 text-primary">
+              DEBIT
+            </Title>
+              
+            <Tabs
+                activeKey={activeTab}
+                onChange={setActiveTab}
+                centered
+                items={[
+                  {
+                    key: 'login',
+                    label: 'Login',
+                    children: <LoginForm />,
+                  },
+                  {
+                    key: 'signup',
+                    label: 'Sign Up',
+                    children: <SignupForm />,
+                  },
+                ]}
+            />
+          </Card>
+        </div>
       </div>
   );
 }

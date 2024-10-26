@@ -3,7 +3,6 @@ import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import { AntdRegistry } from '@ant-design/nextjs-registry';
 import { ConfigProvider } from 'antd';
-import AppSidebar from '@/components/AppSidebar';
 import { theme } from  '@/lib/theme'
 import { Providers} from "@/lib/providers";
 
@@ -26,34 +25,22 @@ export const metadata: Metadata = {
   ],
 };
 
-export default function RootLayout({
-  children,
-}: {
+export default function RootLayout({children}: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+      <html lang="en">
       <body className={inter.className}>
-        <AntdRegistry>
-          <ConfigProvider
-            theme={{
-              token: {
-                colorPrimary: '#1890ff',
-                borderRadius: 6,
-              },
-            }}
-          >
-            <div className="flex min-h-screen">
-              <AppSidebar />
-              <main className="flex-1 p-6">
-                <Providers>
-                {children}
-                </Providers>
-              </main>
-            </div>
-          </ConfigProvider>
-        </AntdRegistry>
+      <AntdRegistry>
+        <ConfigProvider theme={theme}>
+          <Providers>
+            <main className="min-h-screen bg-gray-50">
+              {children}
+            </main>
+          </Providers>
+        </ConfigProvider>
+      </AntdRegistry>
       </body>
-    </html>
+      </html>
   );
 }

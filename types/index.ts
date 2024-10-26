@@ -54,3 +54,15 @@ export interface AddIncomeFormData {
     source: string;
     incomeDate: dayjs.Dayjs;
 }
+
+export interface SignupFormData {
+    email: string;
+    password: string;
+    confirmPassword: string;
+}
+
+
+export interface LoginFormData {
+    email: string;
+    password: string;
+}

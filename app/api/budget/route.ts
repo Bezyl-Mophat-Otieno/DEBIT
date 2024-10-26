@@ -1,8 +1,6 @@
 import { NextResponse } from 'next/server';
 import { executeQuery } from '@/lib/db';
 import { budgetSchema } from '@/lib/validations/budget';
-export const runtime = "edge"
-
 export async function GET() {
     try {
         const budgets = await executeQuery(`
