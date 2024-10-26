@@ -8,10 +8,10 @@ import {AddIncomeFormData} from "@/types";
 import {useIncome} from "@/hooks/useIncome";
 import { addIncome } from "@/services/incomeService";
 
-export  async function AddIncomeModal() {
+export default function AddIncomeModal() {
     const [isOpen, setIsOpen] = useState(false);
     const [form] = Form.useForm();
-    const { createIncome, isCreating } = await useIncome()
+    const { createIncome, isCreating } = useIncome()
     
 
     const handleSubmit = (values: AddIncomeFormData) => {

@@ -1,6 +1,9 @@
 import { NextResponse } from 'next/server';
 import { db } from '@/lib/db';
 import { incomeSchema } from '@/lib/validations/income';
+import { randomUUID } from "node:crypto";
+
+export const dynamic = 'force-static'
 
 export async function POST(request: Request) {
     try {
@@ -14,7 +17,7 @@ export async function POST(request: Request) {
             `INSERT INTO Incomes (amount, source, income_date, user_id)
        VALUES ($1, $2, $3, $4)
        RETURNING *`,
-            [body.amount, body.source, body.incomeDate, 'temp-user-id']
+            [body.amount, body.source, body.incomeDate,randomUUID()]
         );
 
         // Refresh the materialized view

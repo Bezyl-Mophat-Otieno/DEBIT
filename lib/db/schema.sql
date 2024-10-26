@@ -7,6 +7,7 @@ CREATE TABLE DebitUsers (
                        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+
 -- Indexes for Users table
 CREATE INDEX idx_users_email ON DebitUsers(email);
 

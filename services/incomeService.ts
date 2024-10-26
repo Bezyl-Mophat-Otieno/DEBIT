@@ -1,7 +1,7 @@
 import {Income, AddIncomeFormData} from "@/types";
 
 export async function addIncome(data: AddIncomeFormData): Promise<Income> {
-    const response = await fetch('/api/incomes', {
+    const response = await fetch('/api/income', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
