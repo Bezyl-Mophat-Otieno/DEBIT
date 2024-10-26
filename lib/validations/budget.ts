@@ -1,9 +1,9 @@
 import { z } from 'zod';
 
 export const budgetSchema = z.object({
-    amount: z.number().positive(),
     category: z.string().min(1),
-    period: z.enum(['DAILY', 'WEEKLY', 'MONTHLY', 'YEARLY']),
+    amount: z.number().positive(),
+    cadence: z.enum(['daily', 'weekly', 'monthly', 'yearly']),
     startDate: z.date(),
     endDate: z.date(),
 });

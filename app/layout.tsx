@@ -4,6 +4,8 @@ import { Inter } from 'next/font/google';
 import { AntdRegistry } from '@ant-design/nextjs-registry';
 import { ConfigProvider } from 'antd';
 import AppSidebar from '@/components/AppSidebar';
+import { theme } from  '@/lib/theme'
+import { Providers} from "@/lib/providers";
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -43,7 +45,11 @@ export default function RootLayout({
           >
             <div className="flex min-h-screen">
               <AppSidebar />
-              <main className="flex-1 p-6">{children}</main>
+              <main className="flex-1 p-6">
+                <Providers>
+                {children}
+                </Providers>
+              </main>
             </div>
           </ConfigProvider>
         </AntdRegistry>

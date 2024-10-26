@@ -1,26 +1,48 @@
-export interface Transaction {
-    id: string;
-    amount: number;
-    type: 'INCOME' | 'EXPENSE';
-    category: string;
-    description: string;
-    date: Date;
+export interface User {
     userId: string;
+    email: string;
+    createdAt: Date;
+    updatedAt: Date;
+}
+
+export interface Income {
+    incomeId: number;
+    userId: string;
+    amount: number;
+    source: string;
+    incomeDate: Date;
+    createdAt: Date;
+    updatedAt: Date;
 }
 
 export interface Budget {
-    id: string;
-    amount: number;
+    budgetId: number;
+    userId: string;
     category: string;
-    period: 'DAILY' | 'WEEKLY' | 'MONTHLY' | 'YEARLY';
+    amount: number;
+    cadence: 'daily' | 'weekly' | 'monthly' | 'yearly';
     startDate: Date;
     endDate: Date;
-    userId: string;
+    remainingAmount: number;
+    createdAt: Date;
+    updatedAt: Date;
 }
 
-export interface User {
-    id: string;
-    email: string;
-    name: string;
+export interface Expense {
+    expenseId: number;
+    userId: string;
+    budgetId?: number;
+    amount: number;
+    description: string;
+    expenseDate: Date;
     createdAt: Date;
+    updatedAt: Date;
+}
+
+export interface DashboardSummary {
+    userId: string;
+    totalIncome: number;
+    totalExpenditure: number;
+    balance: number;
+    remainingBudget: number;
 }
