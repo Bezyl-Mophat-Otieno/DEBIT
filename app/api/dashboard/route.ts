@@ -1,11 +1,9 @@
 import { NextResponse } from 'next/server';
 import { db } from '@/lib/db';
-import { unstable_noStore as noStore } from 'next/cache';
 
-export const dynamic = 'force-static'
+export const runtime = 'edge';
 
 export async function GET() {
-    noStore();
     try {
         const summary = await db.query(
             'SELECT * FROM Dashboard_Summary WHERE user_id = $1',

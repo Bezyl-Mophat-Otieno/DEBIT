@@ -7,8 +7,10 @@ const withPWA = require('next-pwa')({
 });
 
 const nextConfig = {
-  output: 'export',
-  images: { unoptimized: true },
+  images: {
+    domains: ['images.unsplash.com'],
+    
+  },
   eslint: {
     ignoreDuringBuilds: true
   }

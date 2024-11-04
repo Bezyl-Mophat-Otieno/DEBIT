@@ -3,8 +3,6 @@ import { db } from '@/lib/db';
 import { incomeSchema } from '@/lib/validations/income';
 import { randomUUID } from "node:crypto";
 
-export const dynamic = 'force-static'
-
 export async function POST(request: Request) {
     try {
         const json = await request.json();
