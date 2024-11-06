@@ -19,5 +19,7 @@ export const useAuth = () => {
         loginDebitUser: loginDebitUserMutation.mutate,
         isCreating: addDebitUserMutation.isPending,
         isAuthenticating: loginDebitUserMutation.isPending,
+        created: addDebitUserMutation.isSuccess,
+        authenticated: loginDebitUserMutation.isSuccess,
     }
 }

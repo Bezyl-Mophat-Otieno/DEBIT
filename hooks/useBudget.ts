@@ -22,5 +22,6 @@ export function useBudget() {
         budgets,
         createBudget: createBudgetMutation.mutate,
         isCreating: createBudgetMutation.isPending,
+        created: createBudgetMutation.isSuccess,
     };
 }

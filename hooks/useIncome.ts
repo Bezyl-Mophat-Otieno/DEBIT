@@ -1,6 +1,6 @@
 import {addIncome} from "@/services/incomeService";
 import {AddIncomeFormData} from "@/types";
-import {QueryClient, useMutation, useQueryClient} from "@tanstack/react-query";
+import { useMutation, useQueryClient} from "@tanstack/react-query";
 
 
 export function useIncome(){
@@ -15,5 +15,7 @@ export function useIncome(){
     return {
         createIncome: createIncomeMutation.mutate,
         isCreating: createIncomeMutation.isPending,
+        created: createIncomeMutation.isSuccess,
+        errored: createIncomeMutation.isError,
     }
 }
