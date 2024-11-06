@@ -7,6 +7,7 @@ import dayjs from 'dayjs';
 import {AddIncomeFormData} from "@/types";
 import {useIncome} from "@/hooks/useIncome";
 import { addIncome } from "@/services/incomeService";
+import {SignedIn, UserButton} from "@clerk/nextjs";
 
 export default function AddIncomeModal() {
     const [isOpen, setIsOpen] = useState(false);
@@ -28,7 +29,6 @@ export default function AddIncomeModal() {
             >
                 Add Income
             </Button>
-
             <Modal
                 title={
                     <div className="flex items-center gap-2 text-primary">

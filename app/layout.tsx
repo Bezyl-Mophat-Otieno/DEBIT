@@ -5,6 +5,14 @@ import { AntdRegistry } from '@ant-design/nextjs-registry';
 import { ConfigProvider } from 'antd';
 import { theme } from  '@/lib/theme'
 import { Providers} from "@/lib/providers";
+import Head from 'next/head';
+import {
+  ClerkProvider,
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton
+} from '@clerk/nextjs'
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -34,9 +42,11 @@ export default function RootLayout({children}: {
       <AntdRegistry>
         <ConfigProvider theme={theme}>
           <Providers>
+              <ClerkProvider>
             <main className="min-h-screen bg-gray-50">
               {children}
             </main>
+              </ClerkProvider>  
           </Providers>
         </ConfigProvider>
       </AntdRegistry>

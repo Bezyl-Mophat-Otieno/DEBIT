@@ -5,6 +5,7 @@ import {
     ArrowDownOutlined,
 } from '@ant-design/icons';
 import AddIncomeModal from '@/components/income/AddIncomeModal';
+import {SignedIn, UserButton} from "@clerk/nextjs";
 
 export default function Dashboard() {
     return (
@@ -12,6 +13,9 @@ export default function Dashboard() {
             <div className="flex items-center justify-between mb-6">
                 <h1 className="text-2xl font-bold">Financial Dashboard</h1>
                 <AddIncomeModal />
+                <SignedIn>
+                    <UserButton />
+                </SignedIn>
             </div>
 
             <Row gutter={[16, 16]}>
