@@ -18,16 +18,10 @@ export default function LandingPage() {
                             </p>
                             <div className="mt-10 flex items-center gap-x-6">
                                 <Link
-                                    href="/sign-up"
+                                    href="/auth"
                                     className="rounded-md bg-primary px-6 py-3 text-base font-semibold text-white shadow-sm hover:bg-primary/90 transition-colors"
                                 >
                                     Get Started
-                                </Link>
-                                <Link
-                                    href="/sign-in"
-                                    className="text-base font-semibold leading-6 text-gray-900 hover:text-primary flex items-center gap-2"
-                                >
-                                    Sign In <ArrowRight className="h-4 w-4" />
                                 </Link>
                             </div>
                         </div>
@@ -120,7 +114,7 @@ export default function LandingPage() {
                     </p>
                     <div className="mt-10">
                         <Link
-                            href="/sign-up"
+                            href="/auth"
                             className="rounded-md bg-white px-8 py-3 text-base font-semibold text-primary shadow-sm hover:bg-gray-50 transition-colors"
                         >
                             Get Started Now
@@ -158,18 +152,13 @@ export default function LandingPage() {
                             </ul>
                         </div>
                         <div>
-                            <h4 className="text-lg font-semibold mb-4">Get Started</h4>
                             <ul className="space-y-2 text-gray-400">
-                                <li>
-                                    <Link href="/sign-up" className="hover:text-white transition-colors">
-                                        Sign Up
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link href="/sign-in" className="hover:text-white transition-colors">
-                                        Sign In
-                                    </Link>
-                                </li>
+                                <Link
+                                    href="/auth"
+                                    className="rounded-md bg-primary px-6 py-3 text-base font-semibold text-white shadow-sm hover:bg-primary/90 transition-colors"
+                                    >
+                                    Get Started
+                                </Link>
                             </ul>
                         </div>
                     </div>

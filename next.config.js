@@ -1,3 +1,5 @@
+const { hostname } = require('os');
+
 /** @type {import('next').NextConfig} */
 const withPWA = require('next-pwa')({
   dest: 'public',
@@ -8,7 +10,14 @@ const withPWA = require('next-pwa')({
 
 const nextConfig = {
   images: {
-    domains: ['images.unsplash.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**',
+        port: '',
+        pathname: '/**'
+      }
+    ]
     
   },
   eslint: {
