@@ -3,6 +3,7 @@
   <component name="SqlDialectMappings">
     <file url="file://$PROJECT_DIR$/app/api/auth/login/route.ts" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/app/api/auth/signup/route.ts" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/app/api/clerk-persistence/route.ts" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/app/api/income/route.ts" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/lib/db/schema.sql" dialect="PostgreSQL" />
   </component>

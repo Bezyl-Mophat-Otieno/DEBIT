@@ -1,3 +1,4 @@
+"use client"
 import { Card, Row, Col, Statistic } from 'antd';
 import {
     WalletOutlined,
@@ -6,6 +7,7 @@ import {
 } from '@ant-design/icons';
 import AddIncomeModal from '@/components/income/AddIncomeModal';
 import {SignedIn, UserButton} from "@clerk/nextjs";
+ 
 
 export default function Dashboard() {
     return (

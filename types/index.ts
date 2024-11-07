@@ -66,3 +66,10 @@ export interface LoginFormData {
     email: string;
     password: string;
 }
+
+export interface ClerkSignUpData {
+    id: string;
+    email_address: string;
+    created_at: string;
+    updated_at: string;
+}

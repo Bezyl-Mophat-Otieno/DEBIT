@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server';
+import {NextRequest, NextResponse} from 'next/server';
 // @ts-ignore
 import { compare } from 'bcryptjs';
 import { db } from '@/lib/db';
@@ -6,7 +6,7 @@ import { userSchema } from '@/lib/validations/user';
 
 export const dynamic = 'force-static'
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
     try {
         const json = await request.json();
         const body = userSchema.parse(json);

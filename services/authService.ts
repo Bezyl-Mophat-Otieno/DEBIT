@@ -1,7 +1,4 @@
-import {QueryClient} from "@tanstack/react-query";
-import {useMutation} from "@tanstack/react-query";
-import {SignupFormData, LoginFormData} from "@/types";
-import {message} from "antd";
+import {SignupFormData, LoginFormData, ClerkSignUpData} from "@/types";
 
 export async function signUpDebitUser (values: SignupFormData) {
         const response = await fetch('/api/auth/signup', {
@@ -34,4 +31,20 @@ export async function loginDebitUser (values: LoginFormData) {
                 throw new Error(data.error || 'Login failed');
             }
             return data;
+}
+
+export async function persistClerkSignedUpUser(user: ClerkSignUpData) {
+
+    const response = await fetch('/api/clerk-persistence', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(user),
+    });
+
+    if (!response.ok) {
+        throw new Error('Failed to persist user');
+    }
+    const data = await response.json();
+    
+    return data
 }
