@@ -29,10 +29,10 @@ export async function POST(request: Request) {
 
         // Create user
         const result = await db.query(
-            `INSERT INTO DebitUsers (email,password, password_hash)
-       VALUES ($1, $2, $3)
+            `INSERT INTO DebitUsers (email, password_hash)
+       VALUES ($1, $2)
        RETURNING user_id, email`,
-            [body.email, body.password ,hashedPassword]
+            [body.email, hashedPassword]
         );
 
         const user = result[0];

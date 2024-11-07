@@ -8,9 +8,12 @@ import {useAuth} from "@/hooks/useAuth";
 import { useEffect } from 'react';
 
 
+interface LoginFormProps {
+    readonly setActiveTab: (tab: string)=>void;
+}
 
 
-export function LoginForm() {
+export function LoginForm({ setActiveTab }:LoginFormProps) {
     const router = useRouter();
     const [form] = Form.useForm();
     const {loginDebitUser,isAuthenticating, errored, error, authenticated} = useAuth()
@@ -42,7 +45,6 @@ export function LoginForm() {
     <>
          { contextHolder }
          <Spin spinning={isAuthenticating} tip="Authenticating..." >
-
         <Form
             form={form}
             name="login"
@@ -77,7 +79,7 @@ export function LoginForm() {
 
             <Form.Item>
                 <Button type="primary" htmlType="submit" block size="large" loading={isAuthenticating}>
-                    Log in
+                    Sign in
                 </Button>
             </Form.Item>
         </Form>

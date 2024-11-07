@@ -1,24 +1,44 @@
 'use client';
 
-import { Form, Input, Button, message } from 'antd';
+import { Form, Input, Button, message, Spin } from 'antd';
 import { LockOutlined, MailOutlined } from '@ant-design/icons';
-import { useRouter } from 'next/navigation';
-import { useAuthStore } from '@/lib/store/authStore';
 import {SignupFormData} from "@/types";
 import {useAuth} from "@/hooks/useAuth";
+import { useEffect } from 'react';
 
-export function SignupForm() {
-    const router = useRouter();
-    const setUser = useAuthStore((state) => state.setUser);
+interface SignupFormProps {
+   readonly setActiveTab: (tab: string)=>void
+}
+
+export function SignupForm({ setActiveTab }:SignupFormProps) {
     const [form] = Form.useForm();
-    const {signUpDebitUser, isCreating} = useAuth()
+    const {signUpDebitUser, isCreating, created, error} = useAuth()
+    const [ messageApi, contextHolder ] = message.useMessage()
+
+    useEffect(() => {
+        if (created) {
+            messageApi.open({
+                type: 'success',
+                content: 'You have successfully registered',
+            });
+            setActiveTab('login')
+        }
+        if (error) {
+            messageApi.open({
+                type: 'error',
+                content: error.message,
+            });
+        }
+    }, [isCreating])
 
     const handleSubmit = async (values: SignupFormData) => {
             signUpDebitUser(values)
-            message.success("You have successfully registered")
     };
 
     return (
+    <>
+        { contextHolder }
+        <Spin spinning={isCreating} tip="Registering..." >
         <Form
             form={form}
             name="signup"
@@ -73,7 +93,7 @@ export function SignupForm() {
                     prefix={<LockOutlined />}
                     placeholder="Confirm Password"
                     size="large"
-                />
+                    />
             </Form.Item>
 
             <Form.Item>
@@ -82,5 +102,7 @@ export function SignupForm() {
                 </Button>
             </Form.Item>
         </Form>
+    </Spin>
+    </>
     );
 }

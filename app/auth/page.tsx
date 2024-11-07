@@ -1,11 +1,9 @@
 'use client'
-import {Card, Spin, Tabs} from 'antd';
+import {Card, Tabs, Typography} from 'antd';
 import Image from "next/image";
 import {LoginForm} from "@/components/auth/LoginForm";
 import {SignupForm} from "@/components/auth/SignupForm";
-import {Typography} from "antd";
 import {useState} from "react";
-import { useAuth } from '@/hooks/useAuth';
 
 
 export default function AuthPage() {
@@ -40,12 +38,12 @@ export default function AuthPage() {
                   {
                     key: 'login',
                     label: 'Login',
-                    children: <LoginForm />,
+                    children: <LoginForm setActiveTab = {setActiveTab} />,
                   },
                   {
                     key: 'signup',
                     label: 'Sign Up',
-                    children: <SignupForm />,
+                    children: <SignupForm setActiveTab={setActiveTab} />,
                   },
                 ]}
             />
