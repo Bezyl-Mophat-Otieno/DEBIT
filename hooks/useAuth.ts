@@ -1,4 +1,3 @@
-import {QueryClient, useQueryClient} from "@tanstack/react-query";
 import {signUpDebitUser, loginDebitUser, persistClerkSignedUpUser} from "@/services/authService";
 import {useAuthStore} from "@/lib/store/authStore";
 import {useMutation} from "@tanstack/react-query";
@@ -25,6 +24,8 @@ export const useAuth = () => {
         isAuthenticating: loginDebitUserMutation.isPending,
         created: addDebitUserMutation.isSuccess,
         authenticated: loginDebitUserMutation.isSuccess,
+        errored: loginDebitUserMutation.isError || addDebitUserMutation.isError,
+        error: addDebitUserMutation.error || loginDebitUserMutation.error,
         persistClerkUser:persistClerkSignedUpUserMutation.mutate,
         persisted: persistClerkSignedUpUserMutation.isSuccess
     }

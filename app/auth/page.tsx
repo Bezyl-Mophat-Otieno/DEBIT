@@ -1,10 +1,12 @@
 'use client'
-import {Card, Row, Col, Statistic, Tabs} from 'antd';
+import {Card, Spin, Tabs} from 'antd';
 import Image from "next/image";
 import {LoginForm} from "@/components/auth/LoginForm";
 import {SignupForm} from "@/components/auth/SignupForm";
 import {Typography} from "antd";
 import {useState} from "react";
+import { useAuth } from '@/hooks/useAuth';
+
 
 export default function AuthPage() {
   const [activeTab, setActiveTab] = useState('login');

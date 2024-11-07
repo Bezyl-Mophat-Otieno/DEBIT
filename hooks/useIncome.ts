@@ -17,5 +17,6 @@ export function useIncome(){
         isCreating: createIncomeMutation.isPending,
         created: createIncomeMutation.isSuccess,
         errored: createIncomeMutation.isError,
+        error: createIncomeMutation.error
     }
 }

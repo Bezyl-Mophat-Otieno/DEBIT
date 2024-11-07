@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, PieChart, Wallet, LineChart, Shield, CreditCard, BellRing } from 'lucide-react';
+import { PieChart, Wallet, LineChart, Shield, CreditCard, BellRing } from 'lucide-react';
 
 export default function LandingPage() {
     return (

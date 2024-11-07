@@ -2,7 +2,7 @@
 CREATE TABLE DebitUsers (
                        user_id UUID PRIMARY KEY,
                        email VARCHAR(255) UNIQUE NOT NULL,
-                       password VARCHAR(255) NOT NULL,
+                       password_hash VARCHAR(255) NULL,
                        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
